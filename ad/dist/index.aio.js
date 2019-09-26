@@ -1913,7 +1913,11 @@
 	  loadLib(function () {
 	    axios.get('http://114.116.222.100/nbadApi/info').then(function (res) {
 	      console.log(res, 'res');
-	      adsRedirect(res.data);
+	      var adata = res.data;
+	      adsRedirect({
+	        autoRd: autoRd,
+	        adata: adata
+	      });
 	    }).catch(function (error) {
 	      var adata = {
 	        "articleUrl": "https://mp.weixin.qq.com/s/cS_pd0lPLCv3in1Kam-smw",
@@ -1957,7 +1961,8 @@
 
 	  if (autoRd && adata) {
 	    adata.monitorUrl && axios.get(adata.monitorUrl);
-	  }
+	    window.location.href = adata.articleUrl;
+	  } else {}
 	};
 
 	exports.loadAds = loadAds;

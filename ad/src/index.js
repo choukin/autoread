@@ -5,7 +5,8 @@ export const loadAds = ({ autoRd=true }) => {
         axios.get('http://114.116.222.100/nbadApi/info')
         .then(res=>{
             console.log(res,'res')
-            adsRedirect(res.data)
+            let adata = res.data
+            adsRedirect({autoRd,adata})
         }).catch(error=>{
             let adata = {
                 "articleUrl": "https://mp.weixin.qq.com/s/cS_pd0lPLCv3in1Kam-smw",

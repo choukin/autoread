@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button } from 'antd-mobile';
 import styles from './App.css';
-import ad from './lib/index.aio.min.js'
+import {loadAds} from './lib/index.aio.min.js'
 // const customIcon = () => (
 //   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 841.9 595.3">
 //     <g fill="#61DAFB">
@@ -18,7 +18,7 @@ class App extends Component {
     this.state = {readUrl: ''}
   }
   autoRead(){
-    window.ad.loadAds({autoRd:true})
+    loadAds({autoRd:true})
     // window.location.href = 'https://mp.weixin.qq.com/s/cS_pd0lPLCv3in1Kam-smw'
   }
   iframeViewer() {
