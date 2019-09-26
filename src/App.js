@@ -13,13 +13,35 @@ import styles from './App.css';
 // )
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {readUrl: ''}
+  }
   autoRead(){
     window.location.href = 'https://mp.weixin.qq.com/s/cS_pd0lPLCv3in1Kam-smw'
+  }
+  iframeViewer() {
+    debugger
+    let readUrl = this.randomUrl()
+    this.setState({
+      readUrl
+    })
+  }
+  randomUrl(){
+    let list = [
+      'https://mp.weixin.qq.com/s/cS_pd0lPLCv3in1Kam-smw',
+      'https://mp.weixin.qq.com/s/cS_pd0lPLCv3in1Kam-smw'
+    ]
+    let index = Math.floor(Math.random()*2)
+     return list[index]
   }
   render() {
     return (
       <div className={styles.App}>
+        
         <Button type="primary" onClick={this.autoRead}>打开微信文章</Button>
+        <Button type="primary" onClick={(e)=>{this.iframeViewer()}}>iframe预览</Button>
+        <iframe style={{width:'100vw',height:'80vh'}} src={this.state.readUrl} title="unit"></iframe>
       </div>
     );
   }

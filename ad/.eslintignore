@@ -1,0 +1,7 @@
+build/*.js
+config/*.js
+src/libs/*.js
+src/assets/font/
+/*.json
+/*.js
+static/*
