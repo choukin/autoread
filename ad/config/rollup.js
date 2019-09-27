@@ -1,5 +1,6 @@
 var typescript = require('rollup-plugin-typescript2')
 var babel = require('rollup-plugin-babel')
+// import scss from 'rollup-plugin-scss'
 
 var pkg = require('../package.json')
 
@@ -10,14 +11,7 @@ var name = pkg.name.split('/').pop()
 // var name = pkg.name.replace('@', '').replace(/\//g, '_');
 var version = pkg.version
 console.log(version)
-var banner = ''
-// `/*!
-//  * ${pkg.name} ${version} (https://github.com/yanhaijing/jslib-base)
-//  * API https://github.com/yanhaijing/jslib-base/blob/master/doc/api.md
-//  * Copyright 2017-${(new Date()).getFullYear()} yanhaijing. All Rights Reserved
-//  * Licensed under MIT (https://github.com/yanhaijing/jslib-base/blob/master/LICENSE)
-//  */
-// `
+var banner = `/* eslint-disable */`
 
 var type = pkg.srctype === 'ts' ? 'ts' : 'js'
 

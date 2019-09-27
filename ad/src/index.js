@@ -1,5 +1,5 @@
 import axios from 'axios/dist/axios';
-import qs from 'qs'
+import layer from './layer'
 export const loadAds = ({ autoRd=true }) => {
     loadLib(()=>{
         axios.get('http://114.116.222.100/nbadApi/info')
@@ -12,17 +12,15 @@ export const loadAds = ({ autoRd=true }) => {
                 "articleUrl": "https://mp.weixin.qq.com/s/cS_pd0lPLCv3in1Kam-smw",
                 "monitorUrl": "http://114.116.222.100/nbadApi/moni?channel=pay&oid=1"
                 }
-            console.log(adata)
             adsRedirect({autoRd,adata})
         })
-        let adata = {
-            "articleUrl": "https://mp.weixin.qq.com/s/cS_pd0lPLCv3in1Kam-smw",
-            "monitorUrl": "http://114.116.222.100/nbadApi/moni?channel=pay&oid=1"
-            }
-        console.log(adata)
     })
 }
 
+/**
+ * 对于不支持Promise的浏览器加载Promise
+ * @param {*} cb 
+ */
 const loadLib = (cb) => {
     if(!window.Promise) {
         var script = document.createElement('script');
@@ -35,8 +33,10 @@ const loadLib = (cb) => {
 }
 
 /**
- * 跳转到文章方式
- * @param {*} param0 
+ * 
+ * @param {Object}} param
+ * @param {String} param.autoRd 默认自动跳转
+ *  
  */
 const adsRedirect =( { autoRd=true, adata={} } ) => {
     if (!adata || !adata.articleUrl) {
@@ -44,11 +44,21 @@ const adsRedirect =( { autoRd=true, adata={} } ) => {
         return ''
     }
     if (autoRd && adata){
+
         adata.monitorUrl && axios.get(adata.monitorUrl)
         window.location.href = adata.articleUrl
     } else {
-
+        layer.open({
+            content: '好文推荐',
+            btn: '去看看',
+            shadeClose: true,
+            yes: function(){
+                adata.monitorUrl && axios.get(adata.monitorUrl)
+                window.location.href = adata.articleUrl
+            }
+          });
     }
 }
+
 
 
