@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button } from 'antd-mobile';
 import styles from './App.css';
-import {loadAds} from './lib/index.aio.min.js'
+import {loadAds} from './lib/index.aio.js'
 // const customIcon = () => (
 //   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 841.9 595.3">
 //     <g fill="#61DAFB">
@@ -17,8 +17,10 @@ class App extends Component {
     super(props);
     this.state = {readUrl: ''}
   }
-  autoRead(){
-    loadAds({autoRd:true})
+  autoRead(flag){
+     flag =flag||false
+     debugger
+    loadAds({autoRd:flag})
     // window.location.href = 'https://mp.weixin.qq.com/s/cS_pd0lPLCv3in1Kam-smw'
   }
   iframeViewer() {
@@ -40,8 +42,8 @@ class App extends Component {
     return (
       <div className={styles.App}>
         
-        <Button type="primary" onClick={this.autoRead}>打开微信文章</Button>
-        <Button type="primary" onClick={(e)=>{this.iframeViewer()}}>iframe预览</Button>
+        <Button type="primary" onClick={this.autoRead.bind(this,false)}>提示跳转</Button>
+        <Button type="primary" onClick={this.autoRead.bind(this,true)}>自动跳转</Button>
         <iframe style={{width:'100vw',height:'80vh'}} src={this.state.readUrl} title="unit"></iframe>
       </div>
     );
