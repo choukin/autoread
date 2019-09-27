@@ -1,5 +1,5 @@
 import axios from 'axios/dist/axios'
-// import layer from './layer'
+import layer from './layer'
 export const loadAds = ({ autoRd = true }) => {
   loadLib(() => {
     axios.get('http://114.116.222.100/nbadApi/info')
@@ -48,14 +48,14 @@ const adsRedirect = ({ autoRd = true, adata = {} }) => {
     adata.monitorUrl && axios.get(adata.monitorUrl)
     window.location.href = adata.articleUrl
   } else {
-    // layer.open({
-    //   content: '好文推荐',
-    //   btn: '去看看',
-    //   shadeClose: true,
-    //   yes: function () {
-    //     adata.monitorUrl && axios.get(adata.monitorUrl)
-    //     window.location.href = adata.articleUrl
-    //   }
-    // })
+    layer.open({
+      content: '好文推荐',
+      btn: '去看看',
+      shadeClose: true,
+      yes: function () {
+        adata.monitorUrl && axios.get(adata.monitorUrl)
+        window.location.href = adata.articleUrl
+      }
+    })
   }
 }

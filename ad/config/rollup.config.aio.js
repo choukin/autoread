@@ -15,7 +15,9 @@ var cssnano = require('cssnano')
 module.exports = {
   input: 'src/index.' + common.type,
   output: {
-    file: prod ? '../src/lib/index.aio.min.js' : '../src/lib/index.aio.js',
+    // file: prod ? '../src/lib/index.aio.min.js' : '../src/lib/index.aio.js',
+    file: prod ? 'dist/v0.0.1/index.aio.min.js' : 'dist/v0.0.1/index.aio.js',
+
     format: 'umd',
     // When export and export default are not used at the same time, set legacy to true.
     // legacy: true,

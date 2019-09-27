@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style >
+    .am-button-primary {
+        color: #fff;
+        background-color: #108ee9;
+        border: 1px solid #108ee9;
+        border-radius: 5px;
+    }
+
+.am-button {
+    display: block;
+    outline: 0 none;
+    -webkit-appearance: none;
+    box-sizing: border-box;
+    padding: 0;
+    text-align: center;
+    font-size: 18px;
+    height: 47px;
+    line-height: 47px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
+    white-space: nowrap;
+    /* color: #000; */
+    /* background-color: #fff; */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+    </style>
+    <script src="http://114.116.222.100/js/index.aio.min.js"></script>
+    <title>推广文章demo</title>
+
+</head>
+<body>
+<a role="button" class="am-button am-button-primary" id="loadAd" ><span>自动跳转</span></a>
+
+<script>
+    window.onload=function(){
+        document.getElementById('loadAd').addEventListener('click',function(){
+            window.ad.loadAds({autoRd:true})
+        })
+    }
+</script>    
+</body>
+</html>
